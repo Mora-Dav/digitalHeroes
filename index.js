@@ -21,8 +21,11 @@ app.get('/heroes', (req, res ) => {
 
 app.get('/heroes/:id', (req, res ) => {
     const id = req.params.id
-    const heroe = heroes.filter((heroe) => {
+    /*const heroe = heroes.filter((heroe) => {
         return heroe.id==id
+        */
+       const heroe = heroes.find((heroe) => {
+           return heroe.id == id
     })
-    res.send(heroe)
+    res.send('Hola, mi nombre es '+ heroe.nombre + ' y soy ' + heroe.profesion)
 })

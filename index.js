@@ -19,7 +19,7 @@ app.get('/heroes', (req, res ) => {
     res.send(heroes)
 });
 
-app.get('/heroes/:id', (req, res ) => {
+app.get('/heroes/:id/:ok?', (req, res ) => {
     const id = req.params.id
     /*const heroe = heroes.filter((heroe) => {
         return heroe.id==id
@@ -27,8 +27,15 @@ app.get('/heroes/:id', (req, res ) => {
        const heroe = heroes.find((heroe) => {
            return heroe.id == id
     })
-    if (!heroe) { 
-        res.send('Heroe no encontrado')
+
+
+
+    if (heroe) { 
+        if (req.params.ok) {
+            return res.send('Hola, mi nombre es '+ heroe.nombre + ' y soy ' + heroe.profesion + '. ' + heroe.resenia)
+        }
+        return res.send('Hola, mi nombre es '+ heroe.nombre + ' y soy ' + heroe.profesion)
     }
-    res.send('Hola, mi nombre es '+ heroe.nombre + ' y soy ' + heroe.profesion)
-})
+    res.send('Heroe no encontrado')
+});
+

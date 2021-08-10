@@ -16,6 +16,13 @@ app.get('/',(req, res) => {
 });
 
 app.get('/heroes', (req, res ) => {
-    console.log (heroes)
-    res.send('Mostrando heroes')
+    res.send(heroes)
+});
+
+app.get('/heroes/:id', (req, res ) => {
+    const id = req.params.id
+    const heroe = heroes.filter((heroe) => {
+        return heroe.id==id
+    })
+    res.send(heroe)
 })

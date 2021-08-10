@@ -27,5 +27,8 @@ app.get('/heroes/:id', (req, res ) => {
        const heroe = heroes.find((heroe) => {
            return heroe.id == id
     })
+    if (!heroe) { 
+        res.send('Heroe no encontrado')
+    }
     res.send('Hola, mi nombre es '+ heroe.nombre + ' y soy ' + heroe.profesion)
 })
